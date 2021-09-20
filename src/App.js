@@ -1,14 +1,16 @@
 import React, { Component, Fragment } from 'react';
-import Game from './Game/Game';
+import Game from './pages/Game/Game';
+import './App.scss'
 
 class App extends Component {
   render() {
     return (
       <Fragment>
-        <div>hello</div>
-        <div style={{ width: '1200px' }}>
-          <Game />
+        <div id="content">
+          Web Content...
         </div>
+        <Game />
+        <footer>Footer here</footer>
       </Fragment>
     );
   }

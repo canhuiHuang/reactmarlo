@@ -1,39 +1,25 @@
-import React, { Component } from 'react';
-import Phaser from 'phaser';
-import { IonPhaser } from '@ion-phaser/react';
-import assets from './assetsCollection/assets';
+import React, { Component } from "react";
+import Phaser from "phaser";
+import { IonPhaser } from "@ion-phaser/react";
+// import assets from "./assets/assets";
+// import definitions from "./util/definitions";
+import GameScene from "./scenes/GameScene";
 
-class App extends Component {
+class Game extends Component {
   state = {
     initialize: true,
     game: {
-      width: '100%',
-      height: '100%',
       type: Phaser.AUTO,
-      scene: {
-        init: function () {
-          this.cameras.main.setBackgroundColor('#24252A');
+      width: 1280,
+      height: 720,
+      physics: {
+        default: "arcade",
+        arcade: {
+          gravity: { y: 300 },
+          debug: false,
         },
-
-        preload: function () {
-          assets.images.forEach((image) => {
-            console.log(image);
-            this.load.image(image, `assets/images/${image}.png`);
-          });
-        },
-
-        create: function () {
-          // Preloaded Assets
-          assets.images.forEach((image) => {
-            this.add.image(300, 100, image);
-            console.log(this.cache.image('sky').width);
-          });
-
-          // this.add.image(300, 100, key);
-        },
-
-        update: function () {},
       },
+      scene: GameScene,
     },
   };
 
@@ -43,4 +29,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default Game;
